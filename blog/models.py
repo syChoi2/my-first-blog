@@ -15,3 +15,20 @@ class Post(models.Model): #models은 Post가 장고 모델임을 의미합니다
 	
 	def __str__(self):
 		return self.title
+		
+class Reply(models.Model):
+	ParentPost = models.ForeignKey('Post',on_delete=models.CASCADE)
+	writer = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+	text = models.TextField()
+	input_date = models.DateTimeField(default=timezone.now)
+	
+	def __str__(self):
+		return self.text
+		
+class GuestBook(models.Model):
+	writer = models.CharField(max_length=200)
+	text = models.TextField()
+	input_date = models.DateTimeField(default=timezone.now)
+	
+	def __str__(self):
+		return self.text
