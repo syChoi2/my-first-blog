@@ -1,0 +1,20 @@
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<div class="post">
+		<h1>
+			제목 : {{post.title}} <br>
+		</h1>
+		<p>
+			글번호 : {{post.id}}
+			작성자 : {{post.author}}<br>
+			작성일시 : {% if post.published_date %} {{post.published_date}} {% endif %}
+		</p>	
+						
+		내용 :<br>
+		<p>{{post.text|linebreaksbr}}</p>
+		<!-- 이건 블로그 글 텍스트에서 행이 바뀌면 문단으로 변환하도록 하라는 의미입니다. 행바뀜을 문단으로 변환하는 필터를 적용한다는 표현을 쓰기도 합니다. -->
+	</div>
+
+{% endblock %}
